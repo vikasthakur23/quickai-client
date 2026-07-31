@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-ink text-paper font-body;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+::selection {
+  @apply bg-signal text-ink;
+}
+
+.cursor-blink::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 4px;
+  background: currentColor;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink::after {
+    animation: none;
+  }
+}
+
+/* readable focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid theme("colors.signal");
+  outline-offset: 2px;
+}
